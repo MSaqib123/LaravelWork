@@ -29,8 +29,8 @@ Route::get('/class1/_2_PassingData',function(){
     $b = 10;
     $sum = $a+$b;
     // return view(
-    //     'Class_1_RouteWebFile_Works._2_PassingValueToView_inWebFile',
-    //     ['sum'=>$sum,'name'=>'Saqib','email'=>'m43577535@gmail.com' , 'age' => 25],
+        //     'Class_1_RouteWebFile_Works._2_PassingValueToView_inWebFile',
+        //     ['sum'=>$sum,'name'=>'Saqib','email'=>'m43577535@gmail.com' , 'age' => 25],
     //     compact('sum')
     // );
     
@@ -41,18 +41,30 @@ Route::get('/class1/_2_PassingData',function(){
         ['sum'=>$sum,'name'=>'Saqib','email'=>'m43577535@gmail.com' , 'age' => 25],
         compact('a')
     );
-
+    
     //_________ 3. With __________
     // return view(
-    //     'Class_1_RouteWebFile_Works._2_PassingValueToView_inWebFile',
-    // )->with('xyz',$sum);
-
+        //     'Class_1_RouteWebFile_Works._2_PassingValueToView_inWebFile',
+        // )->with('xyz',$sum);
+        
 });
-
-
+    
+    
+//__________________ 3. Adding Paramters  ______________________
 Route::get('/class1/_3_parametrize/{id}/{name}',function($id,$name){
     return View(
         "Class_1_RouteWebFile_Works._3_parameterizeValues",
         compact('id','name')
+    );
+});
+
+
+//__________________ 4. Bladge Template Paramters  ______________________
+Route::get('/class1/_4_BladeTemplate_Directives',function(){
+    $value = "bakend Values 12345";
+
+    return View(
+        "Class_1_RouteWebFile_Works._4_DirectivesBladeTemplate",
+        compact("value")
     );
 });
