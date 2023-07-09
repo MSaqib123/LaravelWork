@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+//--- encrypt - decrept ---
 use Illuminate\Support\Facades\Crypt;
+//--- Has secruit
 use Illuminate\Support\Facades\Hash;
+//--- Random String ---
+use Illuminate\Support\Str;
 
 
 class FormSubmitionController extends Controller
@@ -107,13 +111,13 @@ class FormSubmitionController extends Controller
         echo "EncryptString : " . $encryptString ."<br>";
 
         $deCryptString = Crypt::decryptString($encryptString);
-        echo "DeCryptString : " . $deCryptString ."<br>";
+        echo "DeCryptString : " . $deCryptString ."<br></br>";
 
 
         //_________ has password _________
         //For secure password hashing in Laravel, it is recommended to use the built-in Hash facade 
         $hashedPassword = Hash::make($req->password);
-        echo "Has Password " . $hashedPassword . "</br>";
+        echo "Has Password " . $hashedPassword . "</br></br>";
         
         //==== to check  has with database ====
         // $user = User::where('email', $req->email)->first(); // Assuming 'User' is your user model
@@ -123,10 +127,22 @@ class FormSubmitionController extends Controller
         //     // Invalid credentials
         // }
 
-        //_________________________ Image Uploading ________________
-        echo $req->img . "<br>";
+        //________________________ 3. Image Uploading Single Image________________________
+        echo $req->img . "<br><br>";
 
-        //________________________ 3. After Clearing all Concepts //________________________ 
+        if($req->img){
+            $myImg = $req->img;
+            $imgName = $myImg->getClientOriginalName();
+            echo "original Name : " . $imgName. "<br>";
+            $imgName = Str::random(16).'__'.$imgName;
+            $myImg->move("images/",$imgName);
+            echo "<img src='url('/images/$imgName')' style='width:100px;height:100px'/>";
+        }
+
+        //________________________ 4. Image Uploading Multiple Images ________________________
+        
+
+        //________________________ 5. After Clearing all Concepts //________________________ 
         // return View("dashboard.formSubmit.postData");
     }
 }

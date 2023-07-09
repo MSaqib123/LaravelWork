@@ -6,7 +6,7 @@
     <br>
 
     <form method="POST" action="{{url('/class3/_3_FormAllControllesPost')}}" enctype="multipart/form-data">
-        @csrf
+      @csrf
       <!--____________ 1. Usernmae , fName , age __________-->
         <div class="form-group row">
           <label for="exampleInputUsername2" class="col-sm-2 col-form-label">UserName</label>
