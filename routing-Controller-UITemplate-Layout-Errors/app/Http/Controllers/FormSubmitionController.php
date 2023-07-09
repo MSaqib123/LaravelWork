@@ -130,17 +130,26 @@ class FormSubmitionController extends Controller
         //________________________ 3. Image Uploading Single Image________________________
         echo $req->img . "<br><br>";
 
-        if($req->img){
-            $myImg = $req->img;
-            $imgName = $myImg->getClientOriginalName();
-            echo "original Name : " . $imgName. "<br>";
-            $imgName = Str::random(16).'__'.$imgName;
-            $myImg->move("images/",$imgName);
-            echo "<img src='url('/images/$imgName')' style='width:100px;height:100px'/>";
-        }
+        // if($req->img){
+        //     $myImg = $req->img;
+        //     $imgName = $myImg->getClientOriginalName();
+        //     echo "original Name : " . $imgName. "<br>";
+        //     $imgName = Str::random(16).'__'.$imgName;
+        //     $myImg->move("images/",$imgName);
+        //     echo "<img src='url('/images/$imgName')' style='width:100px;height:100px'/>";
+        // }
 
         //________________________ 4. Image Uploading Multiple Images ________________________
-        
+        if($req->img){
+            foreach($req->img as $item){
+                $myImg = $item;//$req->img;
+                $imgName = $myImg->getClientOriginalName();
+                echo "original Name : " . $imgName. "<br>";
+                $imgName = Str::random(8).'__'.$imgName;
+                $myImg->move("images/",$imgName);
+                
+            }
+        }
 
         //________________________ 5. After Clearing all Concepts //________________________ 
         // return View("dashboard.formSubmit.postData");

@@ -96,7 +96,7 @@
         <div class="form-group row">
           <label for="sub1" class="col-sm-2 col-form-label">Image</label>
           <div class="col-sm-9">
-            <input type="file" name="img" class="form-control"/>
+            <input type="file" name="img" class="form-control" multiple/>
           </div>
         </div>
 
