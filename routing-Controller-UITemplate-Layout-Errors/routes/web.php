@@ -2,16 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -128,7 +118,7 @@ Route::POST('/class3/_3_FormAllControllesPost',[FormSubmitionController::class,'
 
 
 /*________________________________ Class 4 ORM ___________________________________ */
-#region
+#region ORM
     //________ ORM (object Relational Mapping) ____________
     //1. CRUD krnaa asaan hotaa haa
     //2. Eloquent is  Laravel  ORM
@@ -153,5 +143,46 @@ Route::POST('/class3/_3_FormAllControllesPost',[FormSubmitionController::class,'
     //1. php artisan make:migration create_students_table
     //2. Add   name , email    files 
     //3.  run  php artisan  migrate
+
+#endregion
+
+
+/*________________________________ Class 5 Migration ___________________________________ */
+#region Migration __ Modals
+    //_________________________ Migration ______________________________
+    //_______ Migration  Command ________
+    //1. php artisan make:migration  create_NameTbl_table   ----> create migration
+    //2. php artisan migrate                                ----> execute migration in database
+    //3. php artisan migrate:reset                          ----> to  RollBack All migrations (delete all migration)
+    //4. php artisan migrate:refersh                        ----> reset  All migration (delete , and again create)
+
+    //__ refersh ____
+    //jb  hum    table me  koi  change  krna ho to  hum ----> migration refersh krtaa han
+    //Danger ::    if  there is Data in Table then it will also be  deleted
+
+    //__ Creating New Migration with ----> Teacher <----- ____
+    
+    //_________________________ Models ______________________________
+    //Jo Migration bnata han  us kaa
+    //1. Model bna gaa
+    //2. Controller to bna ga he bna gaa
+    
+    //run --> php artisan make:model Teacher
+
+    //____ Steps ____
+    //1. Connect  model with --> migration table
+    //2. add  Primary key
+    //3. Add controller 
+    //4. add routing
+    use App\Http\Controllers\TeacherController;
+    Route::get("/Teachers/Get",[TeacherController::class,"Index"]);
+    //5. View for action 
+    
+    //________ 1. Get __________
+    //--> getting list of user  ---> adding dummy Records in Database
+    
+    //________ 2. Create __________
+    Route::get("/Teachers/Create",[TeacherController::class,"Create"]);
+    Route::post("/Teachers/CreatePost",[TeacherController::class,"CreatePost"]);
 
 #endregion

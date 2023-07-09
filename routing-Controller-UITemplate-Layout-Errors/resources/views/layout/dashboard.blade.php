@@ -404,16 +404,31 @@
           {{-- _____________________ form Submition _____________ --}}
           <li class="nav-item nav-category">Form Submit</li>
           <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#productControll" aria-expanded="false" aria-controls="productControll">
+            <a class="nav-link" data-bs-toggle="collapse" href="#formControll" aria-expanded="false" aria-controls="formControll">
               <i class="menu-icon mdi mdi-card-text-outline"></i>
               <span class="menu-title">Basic Form Submitin</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="productControll">
+            <div class="collapse" id="formControll">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"><a class="nav-link" href="{{url('/class2/_1_getForm')}}">_1_ Form Get</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{url('/class2/_2_postForm')}}">_2_ Form POST</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{url('/class3/_3_FormAllControlles')}}">_3_ Form Complete</a></li>
+              </ul>
+            </div>
+          </li>
+
+          {{-- _____________________ form Submition _____________ --}}
+          <li class="nav-item nav-category">Teacher</li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#teachersControll" aria-expanded="false" aria-controls="teachersControll">
+              <i class="menu-icon mdi mdi-card-text-outline"></i>
+              <span class="menu-title">Teacher Views</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="teachersControll">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="{{url('/Teachers/Get')}}">Teachers</a></li>
               </ul>
             </div>
           </li>
