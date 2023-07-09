@@ -25,7 +25,7 @@
     <li>switch</li>
     <li>include</li>
     <li>extends</li>
-    <li>section , yield</li>
+    <li>section , yield , extends</li>
     <li>auth , guest</li>
     <li>can , cannot</li>
     <li>isset ,empty</li>
