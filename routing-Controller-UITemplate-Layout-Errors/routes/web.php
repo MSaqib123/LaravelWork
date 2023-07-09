@@ -125,3 +125,33 @@ Route::POST('/class2/_2_postt',[FormSubmitionController::class,'Postt']);
 Route::get('/class3/_3_FormAllControlles',[FormSubmitionController::class,'FormAllControlles']);
 Route::POST('/class3/_3_FormAllControllesPost',[FormSubmitionController::class,'FormAllControllesPost']);
 #endregion
+
+
+/*________________________________ Class 4 ORM ___________________________________ */
+#region
+    //________ ORM (object Relational Mapping) ____________
+    //1. CRUD krnaa asaan hotaa haa
+    //2. Eloquent is  Laravel  ORM
+    //..
+    //..
+
+    //__________ Requireds for ORM _______________
+    //Database
+    //Modals
+    //Migrations
+
+
+    //_______________ Steps _____________________
+    //1. Add Database Name in  ---> .env file  (default user  -- root ,  default pass --- .)
+    //1.1 Add Same Database like name in   mySQL
+
+    //2. There Default Migraton ---> in database   (users, password_reset_tokens,personalAccestoken,failed_jobs)
+    //3. so Simple   Add   -> php artisan migrate  (stil  we no need to make migration)
+
+
+    //_______________ Create Custom Migration _____________________
+    //1. php artisan make:migration create_students_table
+    //2. Add   name , email    files 
+    //3.  run  php artisan  migrate
+
+#endregion
