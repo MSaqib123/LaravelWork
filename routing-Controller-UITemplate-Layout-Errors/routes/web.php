@@ -122,6 +122,6 @@ Route::POST('/class2/_2_postt',[FormSubmitionController::class,'Postt']);
 
 /*________________________________ Class 3 form all Controlles___________________________________ */
 #region Class_3_
-// Route::get('/class2/_2_postForm',[FormSubmitionController::class,'FormPost']);
-// Route::POST('/class2/_2_postt',[FormSubmitionController::class,'Postt']);
+Route::get('/class3/_3_FormAllControlles',[FormSubmitionController::class,'FormAllControlles']);
+Route::POST('/class3/_3_FormAllControllesPost',[FormSubmitionController::class,'FormAllControllesPost']);
 #endregion

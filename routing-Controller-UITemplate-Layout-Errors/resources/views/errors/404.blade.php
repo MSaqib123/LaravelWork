@@ -257,7 +257,7 @@
 
 </style>
 
-<div class="wrapper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+<div class="wrapper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" style="width: 100%;height: 100%;">
     <title>404</title>
     <g id="Layer_12 yellow-back-fig" data-name="Layer 12">
       <path class="cls-1" d="M600.87,872H156a4,4,0,0,0-3.78,4.19h0a4,4,0,0,0,3.78,4.19H600.87a4,4,0,0,0,3.78-4.19h0A4,4,0,0,0,600.87,872Z"/>

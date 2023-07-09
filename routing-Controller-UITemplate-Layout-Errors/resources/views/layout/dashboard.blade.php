@@ -45,7 +45,7 @@
       </div> --}}
     </div>
     <!-- partial:partials/_navbar.html -->
-    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
+    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row" style="margin-top: 0px !important;padding-top: 0px !important;">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
         <div class="me-3">
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
@@ -413,7 +413,7 @@
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"><a class="nav-link" href="{{url('/class2/_1_getForm')}}">_1_ Form Get</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{url('/class2/_2_postForm')}}">_2_ Form POST</a></li>
-                <li class="nav-item"><a class="nav-link" href="">_3_ Form Complete</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{url('/class3/_3_FormAllControlles')}}">_3_ Form Complete</a></li>
               </ul>
             </div>
           </li>

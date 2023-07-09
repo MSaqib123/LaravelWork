@@ -41,4 +41,13 @@ class FormSubmitionController extends Controller
     public function FormAllControlles(){
         return view("dashboard.formSubmit.FormAllControlles");
     }
+    
+    public function FormAllControllesPost(Request $req){
+        $req->validate([
+            'userName'=>'required',
+            'fName'=> 'required',
+            
+        ]);
+        return View("dashboard.formSubmit.postData");
+    }
 }
