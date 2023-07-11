@@ -118,7 +118,7 @@ Route::POST('/class3/_3_FormAllControllesPost',[FormSubmitionController::class,'
 
 
 /*________________________________ Class 4 ORM ___________________________________ */
-#region ORM
+#region Class_4 ORM
     //________ ORM (object Relational Mapping) ____________
     //1. CRUD krnaa asaan hotaa haa
     //2. Eloquent is  Laravel  ORM
@@ -148,7 +148,7 @@ Route::POST('/class3/_3_FormAllControllesPost',[FormSubmitionController::class,'
 
 
 /*________________________________ Class 5 Migration ___________________________________ */
-#region Migration __ Modals
+#region Class_5  (Select & Insert) Migration __ Modals _  
     //_________________________ Migration ______________________________
     //_______ Migration  Command ________
     //1. php artisan make:migration  create_NameTbl_table   ----> create migration
@@ -184,5 +184,13 @@ Route::POST('/class3/_3_FormAllControllesPost',[FormSubmitionController::class,'
     //________ 2. Create __________
     Route::get("/Teachers/Create",[TeacherController::class,"Create"]);
     Route::post("/Teachers/CreatePost",[TeacherController::class,"CreatePost"]);
+#endregion
 
+
+/*________________________________ Class 5 Migration ___________________________________ */
+#region Class_6 (Edit , Delete ) CRUD complete
+Route::get("/Teachers/Edit/{id}",[TeacherController::class,"Edit"]);
+Route::POST("/Teachers/EditPost/{id}",[TeacherController::class,"EditPost"]);
+
+Route::get("/Teachers/delete/{id}",[TeacherController::class,"delete"]);
 #endregion

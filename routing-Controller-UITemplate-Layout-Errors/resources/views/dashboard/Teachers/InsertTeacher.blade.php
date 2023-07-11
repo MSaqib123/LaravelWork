@@ -12,7 +12,7 @@
     <div class="form-group row">
       <label for="Name" class="col-sm-2 col-form-label">Enter Name</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="Name" placeholder="Enter Name" name="Name">
+        <input type="text" class="form-control" id="Name" value="{{old('Name')}}" placeholder="Enter Name" name="Name">
         @error('Name')
           <p class="text-danger">{{$message}}</p>
         @enderror
@@ -22,7 +22,7 @@
     <div class="form-group row">
       <label for="Grade" class="col-sm-2 col-form-label">Enter Grade</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="Grade" placeholder="Enter Grade" name="Grade">
+        <input type="text" class="form-control" id="Grade" value="{{old('Grade')}}" placeholder="Enter Grade" name="Grade">
         @error('Grade')
           <p class="text-danger">{{$message}}</p>
         @enderror
@@ -45,7 +45,7 @@
     <div class="form-group row">
       <label for="email1" class="col-sm-2 col-form-label">Email</label>
       <div class="col-sm-9">
-        <input type="email" class="form-control" id="email1" placeholder="email1" name="Email">
+        <input type="email" class="form-control" value="{{old('Email')}}" id="email1" placeholder="email1" name="Email">
         @error('email')
             <p class="text-danger">{{$message}}</p>
         @enderror
