@@ -58,7 +58,7 @@
                 <label for="active">Active:</label>
                 <br>
                 <label>
-                    <input type="checkbox" name="active" value="1" {{ old('active', $student->active) == 1 ? 'checked' : '' }}>
+                    <input type="checkbox" name="active" {{ old('active', $student->active) ? 'checked' : '' }}>
                     Active
                 </label>
             </div>

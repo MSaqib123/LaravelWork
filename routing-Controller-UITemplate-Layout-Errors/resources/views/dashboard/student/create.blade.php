@@ -56,10 +56,7 @@
             <div class="form-group">
                 <label for="active">Active:</label>
                 <br>
-                <label><input type="checkbox" name="active" value="1"> Active</label>
-                <div class="invalid-feedback">
-                    Please check the active checkbox.
-                </div>
+                <label><input type="checkbox" name="active" value="1">Active</label>
             </div>
             <button type="submit" class="btn btn-primary">Add</button>
         </form>

@@ -195,7 +195,7 @@ Route::POST("/Teachers/EditPost/{id}",[TeacherController::class,"EditPost"]);
 Route::get("/Teachers/delete/{id}",[TeacherController::class,"delete"]);
 #endregion
 
-/*________________________________ Class 6  DB Query ___________________________________ */
+/*________________________________ Class 6 DB Query ___________________________________ */
 #region Class_7  DB Query CRUD  vs  Migraton/Model
     //____________ 1. DB Query ____________________
     /*
@@ -244,4 +244,22 @@ Route::get("/Teachers/delete/{id}",[TeacherController::class,"delete"]);
 
     //delete
     Route::delete('/students/{id}', [StudentController::class, 'destroy'])->name('students.destroy');
+#endregion
+
+
+/*________________________________ Class 7 DB Query ___________________________________ */
+#region class_8  Update_Migration
+    //after create migration how to update migration
+
+    //___ 1.  create migration 
+    //php artisan make:migration create_roles_table
+
+    //___ 2.  add column migration ___________
+    //php artisan make:migration create_createdby_column_to_roles_table
+    
+    //___ 3.  delete column migration
+    //php artisan make:migration remove_status_from_roles
+    //$table->dropColumn('status');
+
+    
 #endregion
