@@ -46,7 +46,7 @@
       <label for="email1" class="col-sm-2 col-form-label">Email</label>
       <div class="col-sm-9">
         <input type="email" class="form-control" value="{{old('Email')}}" id="email1" placeholder="email1" name="Email">
-        @error('email')
+        @error('Email')
             <p class="text-danger">{{$message}}</p>
         @enderror
       </div>

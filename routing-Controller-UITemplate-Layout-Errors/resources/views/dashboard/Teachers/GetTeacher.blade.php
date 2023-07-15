@@ -7,7 +7,7 @@
 
 <div class="row mt-3">
     <div class="col-3">
-        <h2>All Teachers</h2>
+        <h2>All Teachers (Model Migration)</h2>
     </div>
     <div class="col-9 d-flex justify-content-end">
         <a href="{{Url('/Teachers/Create')}}" class="btn btn-sm btn-primary me-3">Create New Record</a>

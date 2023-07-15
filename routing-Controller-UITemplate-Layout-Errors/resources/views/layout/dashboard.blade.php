@@ -391,7 +391,8 @@
 
       {{-- ______________________ Main Content ______________________ --}}
       <!-- partial:partials/_sidebar.html -->
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      
+      <nav class="sidebar sidebar-offcanvas" style="max-height: 100%" id="sidebar">
         <ul class="nav">
           
           <li class="nav-item">
@@ -428,11 +429,11 @@
             </a>
             <div class="collapse" id="teachersControll">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="{{url('/Teachers/Get')}}">Teachers</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{url('/Teachers/Get')}}">Te CRUD ModelMig</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{url('/Dashboard/Student/Index')}}">St CRUD dbQuery</a></li>
               </ul>
             </div>
           </li>
-
 
           {{-- _____________________ UI Element _____________ --}}
           <li class="nav-item nav-category">UI Elements</li>
@@ -525,6 +526,7 @@
           </li>
         </ul>
       </nav>
+
        <!-- partial -->
        <div class="main-panel">
 

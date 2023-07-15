@@ -21,7 +21,7 @@ class TeacherController extends Controller
         return View("Dashboard.Teachers.InsertTeacher");
     }
     public function CreatePost(Request $req){
-        try{
+        // try{
             $req->validate([
                 'Name' => 'required | max:25',
                 'Grade' => 'required | max:25',
@@ -57,14 +57,13 @@ class TeacherController extends Controller
             }
     
             return Redirect("/Teachers/Get");   
-        } catch (\Exception $e) {
-            // Handle the exception
-            return $e->getMessage(); // You can customize the error handling as per your requirement
-        }
+        // } catch (\Exception $e) {
+        //     // Handle the exception
+        //     return $e->getMessage(); // You can customize the error handling as per your requirement
+        // }
     }
 
     //__________ 3. Edit _____________
-
     public function Edit($id){
         $t = Teacher::find($id);
         return View("Dashboard.Teachers.EditTeacher",compact('t'));

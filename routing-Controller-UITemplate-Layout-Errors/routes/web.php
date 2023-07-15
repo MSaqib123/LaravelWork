@@ -187,10 +187,61 @@ Route::POST('/class3/_3_FormAllControllesPost',[FormSubmitionController::class,'
 #endregion
 
 
-/*________________________________ Class 5 Migration ___________________________________ */
+/*________________________________ Class 5 Migration / Model ___________________________________ */
 #region Class_6 (Edit , Delete ) CRUD complete
 Route::get("/Teachers/Edit/{id}",[TeacherController::class,"Edit"]);
 Route::POST("/Teachers/EditPost/{id}",[TeacherController::class,"EditPost"]);
 
 Route::get("/Teachers/delete/{id}",[TeacherController::class,"delete"]);
+#endregion
+
+/*________________________________ Class 6  DB Query ___________________________________ */
+#region Class_7  DB Query CRUD  vs  Migraton/Model
+    //____________ 1. DB Query ____________________
+    /*
+        1. DB Query refers to using the database query builder provided by Laravel to interact with the database directly.
+        2. It allows you to write SQL queries in a more expressive and fluent manner using the Laravel query builder methods.
+        3. With the DB query builder, you can perform various operations like selecting, inserting, updating, and deleting data from the database.
+        4. It provides a way to work with databases without the need for creating model classes.
+    */
+
+    //____________ 2. Model Migration ____________________
+    /*
+        1. Model Migration refers to creating and modifying database tables and their structures using Laravel's migration feature.
+        2. Migrations are like version control for your database schema. They allow you to define the structure of your database tables and keep them in sync with your codebase.
+        3. Migrations are written in PHP and use Laravel's Schema Builder to define the tables, columns, indexes, and other database elements.
+        4. Migrations are executed through the command line, and Laravel keeps track of which migrations have been run and allows you to roll back or re-run them as needed.
+        5. Migrations are often used in conjunction with Eloquent models, as they provide a convenient way to create and modify the underlying database tables for your models.
+    */
+
+    //____________  Disadvantages of DB queyr ____________________
+    /*
+        1. SQL Knowledge:    bhot hona chya
+        2. Limited Model Relationship Integration  :   The DB query builder is independent of Laravel's Eloquent ORM, which means it doesn't provide direct support for model relationships
+        3. Complexity :   complex query likhnaee parin gee
+        4. Potential for SQL Injection   :   Hacking  issue
+        5. Query Optimization   :  Complex DB Query make application ,,,   laravel  ORM  provide   Query Optimization  which make Application  Faster . 
+    */
+
+
+    //_________________ Working ___________________
+    //1. Create  student Table in  MYSQL
+    //2. Create Controler
+    use App\Http\Controllers\StudentController;
+
+    Route::get('/Dashboard/Student/Index', [StudentController::class, 'index'])->name('students.index');
+
+    //create
+    Route::get('/Dashboard/Student/create', [StudentController::class, 'create'])->name('students.create');
+    Route::post('/Dashboard/Student/store', [StudentController::class, 'store'])->name('students.store');
+
+    //edit
+        Route::get('/Dashboard/Student/edit/{id}', [StudentController::class, 'edit'])->name('students.edit');
+        Route::put('/Dashboard/Student/{id}', [StudentController::class, 'update'])->name('students.update');
+
+    //view signle
+    // Route::get('/Dashboard/Student/{id}', [StudentController::class, 'show'])->name('students.show');
+
+    //delete
+    Route::delete('/students/{id}', [StudentController::class, 'destroy'])->name('students.destroy');
 #endregion
