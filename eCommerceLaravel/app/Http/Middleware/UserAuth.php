@@ -21,10 +21,10 @@ class UserAuth
     
         // // Add some debugging statements to check session data
         // if ($request->session()->has('user')) {
-        //     // Session user data is set
+        //     // Session user data is set 
         //     dd($request->session()->get('user'));
         // }
-        
+
         return $next($request);
     }
 }

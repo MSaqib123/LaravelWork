@@ -16,13 +16,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ClientController::class,"Index"]);
-Route::get('Dashboard/Index', [DashboardController::class,"Index"]);
 
 //____________________ frontend __________________
-#region frontend route
-
+#region frontend routes
+Route::get('/', [ClientController::class,"Index"]);
 Route::get('/Account/Login', [AccountControler::class,"Login"]);
 Route::Post('/Account/Login', [AccountControler::class,"LoginPost"]);
-
 #endregion 
+
+//____________________ dashboard __________________
+#region dashbaord routes
+Route::get('Dashboard/Index', [DashboardController::class,"Index"]);
+
+#endregion
