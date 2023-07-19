@@ -19,4 +19,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ClientController::class,"Index"]);
 Route::get('Dashboard/Index', [DashboardController::class,"Index"]);
 
+//____________________ frontend __________________
+#region frontend route
+
 Route::get('/Account/Login', [AccountControler::class,"Login"]);
+Route::Post('/Account/Login', [AccountControler::class,"LoginPost"]);
+
+#endregion 

@@ -12,14 +12,16 @@
           <h3>Sign In to <strong>Shoping Cart</strong></h3>
           <br>
         </div>
-        <form action="#" method="post" autocomplete="off">
+
+        <form action="/Account/Login" method="post" autocomplete="off">
+          @csrf
           <div class="form-group first">
             <label for="email">Email</label>
-            <input type="text" class="form-control" id="email">
+            <input type="text" name="email" class="form-control" id="email">
           </div>
           <div class="form-group last mb-4">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password">
+            <input type="password" name="password" class="form-control" id="password">
             
           </div>
           
