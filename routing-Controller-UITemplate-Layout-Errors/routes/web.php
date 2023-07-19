@@ -260,6 +260,24 @@ Route::get("/Teachers/delete/{id}",[TeacherController::class,"delete"]);
     //___ 3.  delete column migration
     //php artisan make:migration remove_status_from_roles
     //$table->dropColumn('status');
-
-    
 #endregion
+
+/*________________________________ Class 8 Converting Application on Local Server___________________________________ */
+#region project
+    //ager hum direct  localhost par run krain gaa to  PUblic  url dana paraa gaa
+    //to humain  project ko public bnana hota ha
+
+
+    //______  Remove Public File _______________
+    //1. Remove Public from  URL 
+        //Go to   vender/laravel/framework/src/iluminute/fundation/resources/
+        //copy server.php file and past in project 
+        //change name to  index.php
+        //change directlroy   :/public/index.php
+        //copy  .htacess  file form public and past to project folder
+
+    //2.  Protect .Env  file from Project
+    
+    //3. Ready to go  --> after this you also can deply project
+#endregion
+
