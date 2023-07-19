@@ -62,7 +62,9 @@
       <div class="carousel-inner">
           @foreach ($product as $item)
               <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                  <img class="d-block w-100" src="{{ $item->gallery }}" alt="Slide {{ $loop->iteration }}">
+                  <a href="{{url('/Product/Detail')}}/{{$item['id']}}">
+                    <img class="d-block w-100" src="{{ $item->gallery }}" alt="Slide {{ $loop->iteration }}">
+                  </a>
                   <div class="carousel-caption d-none d-md-block">
                       <h5>{{ $item['name'] }}</h5>
                       <p>{{ $item['description'] }}</p>

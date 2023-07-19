@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccountControler;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ClientController::class,"Index"]);
 Route::get('/Account/Login', [AccountControler::class,"Login"]);
 Route::Post('/Account/Login', [AccountControler::class,"LoginPost"]);
+
+Route::get('/Product/Detail/{id}', [ProductController::class,"ProductDetail"]);
 #endregion 
 
 //____________________ dashboard __________________
