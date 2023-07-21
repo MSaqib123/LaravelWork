@@ -25,6 +25,8 @@ Route::get('/Account/Login', [AccountControler::class,"Login"]);
 Route::Post('/Account/Login', [AccountControler::class,"LoginPost"]);
 
 Route::get('/Product/Detail/{id}', [ProductController::class,"ProductDetail"]);
+
+Route::get('/Product/search', [ProductController::class,"Search"]);
 #endregion 
 
 //____________________ dashboard __________________
