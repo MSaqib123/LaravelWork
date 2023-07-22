@@ -113,9 +113,12 @@
                             <h6>Quantity :</h6>
                             <input type="number" class="form-control form-control-sm text-center" value="1">
                         </div>
-                        <div class="col-lg-12 ml-5 ms-5">
-                            <br>
-                            <button href="#" class="btn btn-primary">Add To Cart</button>
+                        <div class="col-lg-12 ml-5 ms-5 d-flex pt-3">
+                            <form class="mr-3" method="POST" action="/Product/AddToCart">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{$ProductDetail->id}}">
+                                <button href="#" class="btn btn-primary">Add To Cart</button>
+                            </form>
                             <button href="#" class="btn btn-success">Shop Now</button>
                             <br>
                         </div>

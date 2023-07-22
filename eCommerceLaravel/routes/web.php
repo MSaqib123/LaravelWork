@@ -21,12 +21,13 @@ use Illuminate\Support\Facades\Route;
 //____________________ frontend __________________
 #region frontend routes
 Route::get('/', [ClientController::class,"Index"]);
-Route::get('/Account/Login', [AccountControler::class,"Login"]);
+Route::get('/Account/Login', [AccountControler::class,"Login"])->name("loginAccount");
 Route::Post('/Account/Login', [AccountControler::class,"LoginPost"]);
 
 Route::get('/Product/Detail/{id}', [ProductController::class,"ProductDetail"]);
 
 Route::get('/Product/search', [ProductController::class,"Search"]);
+Route::post('/Product/AddToCart', [ProductController::class,"AddToCart"]);
 #endregion 
 
 //____________________ dashboard __________________
