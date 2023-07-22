@@ -43,7 +43,7 @@
         <div class="icons">
           <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
           <a href="#" class="icons-btn d-inline-block"><span class="icon-heart-o"></span></a>
-          <a href="cart.html" class="icons-btn d-inline-block bag">
+          <a href="{{url('/Product/CartList')}}" class="icons-btn d-inline-block bag">
             <span class="icon-shopping-bag"></span>
             <?php
               use App\Http\Controllers\ProductController;
