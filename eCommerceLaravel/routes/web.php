@@ -39,9 +39,10 @@ Route::get('/Account/Logout',function(){
 Route::get('/Account/Register', [AccountControler::class,"Register"])->name("registorAccount");
 Route::Post('/Account/Register', [AccountControler::class,"RegisterPost"]);
 
-
 Route::get('/Product/CartList', [ProductController::class,"CartList"]);
+Route::get('/Product/Remove/{id}', [ProductController::class,"RemoveCart"]);
 
+Route::get('/Product/UpdateQuantity/{id}', [ProductController::class,"UpdateQuantity"]);
 #endregion 
 
 //____________________ dashboard __________________

@@ -4,9 +4,14 @@
     <div class="site-section">
         <div class="container">
 
-            {{-- ___________________ checkOut __________________ --}}
+            
+            {{-- ___________________ tOTAL cART lIST __________________ --}}
             <div class="row mb-5">
-                <form class="col-md-12" method="post">
+                
+                <div class="col-md-12">
+                    <button class="btn btn-primary btn" onclick="">Go To Checkout</button>
+                    <br><br>
+                    
                     <div class="site-blocks-table">
                         <table class="table table-bordered">
                             <thead>
@@ -29,81 +34,42 @@
                                             <h2 class="h5 text-black">{{ $p->name }}</h2>
                                         </td>
                                         <td>RS {{ $p->price }}</td>
+
                                         <td>
-                                            <div class="input-group mb-3" style="max-width: 120px;">
-                                                <div class="input-group-prepend">
-                                                    <button class="btn btn-outline-primary js-btn-minus"
-                                                        type="button">&minus;</button>
+                                            <form action="{{url('/Product/UpdateQuantity')}}/{{ $p->cart_id }}"  class="d-flex align-content-center justify-content-center">
+                                                @csrf
+                                                <div class="input-group mb-3" style="max-width: 120px;">
+                                                    <div class="input-group-prepend">
+                                                        <button class="btn btn-outline-primary "
+                                                            type="submit" name="quantity_change" value="-1">&minus;</button>
+                                                    </div>
+
+                                                    <input type="text" class="form-control text-center" value='{{$p->quantity}}'
+                                                        placeholder="" aria-label="Example text with button addon"
+                                                        aria-describedby="button-addon1">
+
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-outline-primary "
+                                                            type="submit" name="quantity_change" value="1">&plus;</button>
+                                                    </div>
                                                 </div>
-                                                <input type="text" class="form-control text-center" value="1"
-                                                    placeholder="" aria-label="Example text with button addon"
-                                                    aria-describedby="button-addon1">
-                                                <div class="input-group-append">
-                                                    <button class="btn btn-outline-primary js-btn-plus"
-                                                        type="button">&plus;</button>
-                                                </div>
-                                            </div>
+                                            </form>
                                         </td>
-                                        <td>0</td>
-                                        <td><a href="#" class="btn btn-primary height-auto btn-sm">X</a></td>
+
+                                        <td>{{$p->price * $p->quantity}}</td>
+                                        <td><a href="/Product/Remove/{{$p->cart_id}}" class="btn btn-primary height-auto btn-sm">X</a></td>
                                     </tr>
                                 @endforeach
-                                {{-- <tr>
-                  <td class="product-thumbnail">
-                    <img src="images/cloth_1.jpg" alt="Image" class="img-fluid">
-                  </td>
-                  <td class="product-name">
-                    <h2 class="h5 text-black">Top Up T-Shirt</h2>
-                  </td>
-                  <td>$49.00</td>
-                  <td>
-                    <div class="input-group mb-3" style="max-width: 120px;">
-                      <div class="input-group-prepend">
-                        <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
-                      </div>
-                      <input type="text" class="form-control text-center" value="1" placeholder=""
-                        aria-label="Example text with button addon" aria-describedby="button-addon1">
-                      <div class="input-group-append">
-                        <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
-                      </div>
-                    </div>
-                  </td>
-                  <td>$49.00</td>
-                  <td><a href="#" class="btn btn-primary height-auto btn-sm">X</a></td>
-                </tr>
-                <tr>
-                  <td class="product-thumbnail">
-                    <img src="images/cloth_2.jpg" alt="Image" class="img-fluid">
-                  </td>
-                  <td class="product-name">
-                    <h2 class="h5 text-black">Polo Shirt</h2>
-                  </td>
-                  <td>$49.00</td>
-                  <td>
-                    <div class="input-group mb-3" style="max-width: 120px;">
-                      <div class="input-group-prepend">
-                        <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
-                      </div>
-                      <input type="text" class="form-control text-center" value="1" placeholder=""
-                        aria-label="Example text with button addon" aria-describedby="button-addon1">
-                      <div class="input-group-append">
-                        <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
-                      </div>
-                    </div>
-                  </td>
-                  <td>$49.00</td>
-                  <td><a href="#" class="btn btn-primary height-auto btn-sm">X</a></td>
-                </tr> --}}
                             </tbody>
                         </table>
                     </div>
-                </form>
+                </div>
             </div>
 
             {{-- ___________________ checkOut __________________ --}}
-            <div class="row">
+            {{--<div class="row">
                 <div class="col-md-6">
-                    <div class="row mb-5">
+                    {{-- <div class="row mb-5">
                         <div class="col-md-6 mb-3 mb-md-0">
                             <button class="btn btn-primary btn-sm btn-block">Update Cart</button>
                         </div>
@@ -124,7 +90,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 pl-5">
+                <div class="offset-md-6 col-md-6 pl-5">
                     <div class="row justify-content-end">
                         <div class="col-md-7">
                             <div class="row">
@@ -142,7 +108,7 @@
                             </div>
                             <div class="row mb-5">
                                 <div class="col-md-6">
-                                    <span class="text-black">Total</span>
+                                    <span class="text-black">Total after Discount</span>
                                 </div>
                                 <div class="col-md-6 text-right">
                                     <strong class="text-black">$230.00</strong>
@@ -159,6 +125,7 @@
                     </div>
                 </div>
             </div>
+            --}}
 
         </div>
     </div>

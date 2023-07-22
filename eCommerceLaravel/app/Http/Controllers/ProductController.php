@@ -56,7 +56,7 @@ class ProductController extends Controller
             $products = DB::table('cart')
                 ->join('products','cart.product_id','=','products.id')
                 ->where('cart.user_id',$userId)
-                ->select('products.*')
+                ->select('products.*','cart.id as cart_id','cart.quantity')
                 ->get();
             return View("client.Product.CartList",['CartList'=>$products]);
         }
@@ -65,5 +65,29 @@ class ProductController extends Controller
         }        
     }
 
+    public function RemoveCart($id){
+        cart::destroy($id);
+        return redirect('/Product/CartList');
+    }
+
+    public function UpdateQuantity(Request $req, $id) {
+        $cartItem = Cart::find($id);
+    
+        if ($cartItem) {
+            $quantityChange = $req->input('quantity_change');
+            if ($quantityChange) {
+                $newQuantity = $cartItem->quantity + $quantityChange;
+                
+                if ($newQuantity > 0) {
+                    $cartItem->quantity = $newQuantity;
+                    $cartItem->save();
+                } else {
+                    // If the new quantity is zero or negative, remove the item from the cart
+                    $cartItem->delete();
+                }
+            }
+        }
+        return redirect('/Product/CartList');
+    }
 
 }
