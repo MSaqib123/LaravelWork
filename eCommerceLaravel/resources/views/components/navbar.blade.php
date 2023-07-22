@@ -47,11 +47,31 @@
             <span class="icon-shopping-bag"></span>
             <?php
               use App\Http\Controllers\ProductController;
-              $total=ProductController::cartItem();
+              $total = 0;
+              if(Session::has('user')){
+                  $total=ProductController::cartItem();
+              }
             ?>
             <span class="number">{{$total}}</span>
           </a>
-          <a href="{{url('/Account/Login')}}" class="icons-btn d-inline-block pl-4 text-danger">Login</a>
+
+          @if (Session::has('user'))
+            <a href="{{url('/Account/Register')}}" class="icons-btn d-inline-block" style="margin-left: 25px">
+                <span class="icon-user" style="font-size: 20px"></span>
+            </a>
+            <a href="{{url('/Account/Logout')}}" class="icons-btn d-inline-block">
+                <span class="icon-exit_to_app" style="font-size: 20px"></span>
+            </a>
+
+            @else
+                <a href="{{url('/Account/Login')}}" class="icons-btn d-inline-block" style="margin-left: 25px">
+                    <span class="icon-lock" style="font-size: 20px"></span>
+                </a>
+                <a href="{{url('/Account/Register')}}" class="icons-btn d-inline-block">
+                    <span class="icon-registered" style="font-size: 20px"></span>
+                </a>
+          @endif
+
           <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span
               class="icon-menu"></span></a>
         </div>

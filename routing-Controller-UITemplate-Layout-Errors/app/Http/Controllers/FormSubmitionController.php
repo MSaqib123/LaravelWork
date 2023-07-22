@@ -114,7 +114,7 @@ class FormSubmitionController extends Controller
         echo "DeCryptString : " . $deCryptString ."<br></br>";
 
 
-        //_________ has password _________
+        //_________ hash password _________
         //For secure password hashing in Laravel, it is recommended to use the built-in Hash facade 
         $hashedPassword = Hash::make($req->password);
         echo "Has Password " . $hashedPassword . "</br></br>";

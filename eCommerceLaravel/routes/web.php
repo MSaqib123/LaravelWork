@@ -5,6 +5,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,16 @@ Route::get('/Product/Detail/{id}', [ProductController::class,"ProductDetail"]);
 
 Route::get('/Product/search', [ProductController::class,"Search"]);
 Route::post('/Product/AddToCart', [ProductController::class,"AddToCart"]);
+
+Route::get('/Account/Logout',function(){
+    Session::forget('user');
+    return redirect('/');
+});
+
+
+Route::get('/Account/Register', [AccountControler::class,"Register"])->name("registorAccount");
+Route::Post('/Account/Register', [AccountControler::class,"RegisterPost"]);
+
 #endregion 
 
 //____________________ dashboard __________________
