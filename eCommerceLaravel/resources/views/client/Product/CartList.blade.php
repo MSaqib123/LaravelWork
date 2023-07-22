@@ -7,11 +7,10 @@
             
             {{-- ___________________ tOTAL cART lIST __________________ --}}
             <div class="row mb-5">
-                
                 <div class="col-md-12">
                     <button class="btn btn-primary btn" onclick="">Go To Checkout</button>
                     <br><br>
-                    
+
                     <div class="site-blocks-table">
                         <table class="table table-bordered">
                             <thead>

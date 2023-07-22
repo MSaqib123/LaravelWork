@@ -47,8 +47,16 @@ class ProductController extends Controller
     //_____ count Cart __
     static public function cartItem(){
         $userId = Session::get('user')['id'];
-        return cart::where('user_id',$userId)->count();
+        // return cart::where('user_id',$userId)->count();
+        $cartItems = cart::where('user_id', $userId)->get();
+    
+        $totalItems = 0;
+        foreach ($cartItems as $cartItem) {
+            $totalItems += $cartItem->quantity;
+        }
+        return $totalItems;
      }
+    
 
     public function CartList(Request $req){
         if($req->session()->has('user')){
