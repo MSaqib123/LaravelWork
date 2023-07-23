@@ -35,42 +35,53 @@
                             <p>Enter your Personal information</p>
                         </div>
                         <div class="col-md-6 mb-3 mb-md-0">
-                            <input type="text" class="form-control py-3" id="Name" placeholder="Enter Name">
+                            <input type="text" class="form-control py-3" id="name" name="name" placeholder="Enter Name">
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control py-3" id="Email" placeholder="Enter Email">     
+                            <input type="email" class="form-control py-3" id="email" name="email" placeholder="Enter Email">     
                         </div>
                         <div class="col-md-12">
                             <br>
-                            <textarea type="text" rows="2" class="form-control py-3" id="Email" placeholder="Enter Address"></textarea>
+                            <textarea type="text" rows="2" class="form-control py-3" id="address" name="address" placeholder="Enter Address"></textarea>
+                        </div>
+                        <div class="col-md-12">
+                            <br>
+                            <label for="deliveryAddress" class="text-black">Delevery Adderess</label>
+                            <textarea type="text" rows="2" class="form-control py-3" id="deliveryAddress" name="deliveryAddress"  placeholder="Enter Delivery Address" required></textarea>
                         </div>
                         <div class="col-md-6">
                             <br>
-                            <input type="text" class="form-control py-3" id="Email" placeholder="Enter Phone#">     
+                            <input type="text" class="form-control py-3" id="phone" name="phone" placeholder="Enter Phone#">     
                         </div>
                         <div class="col-md-6">
                             <br>
-                            <input type="text" class="form-control py-3" id="Email" placeholder="Enter Mobile#">     
+                            <input type="text" class="form-control py-3" id="mobile" name="mobile" placeholder="Enter Mobile#">     
                         </div>
                     </div>
 
-                    {{-- ______________ Payment information _________________ --}}
-                    <div class="row">
-                        <div class="col-md-12">
+                    {{-- ______________ Payment | Delevery Information _________________ --}}
+                    <div class="row"> 
+                        {{-- ______________ Payment information _________________ --}}
+                        <div class="col-md-6">
                             <br><br>
                             <label class="text-black h4" for="coupon">Payment Information</label>
-                            <p>Enter your Billling information</p>
+                            <p class="text-black">Enter your Billling information</p>
+
+                            @foreach ($proDto->paymentMethod as $item)
+                                <label><input type="radio" value="{{$item->id}}" name="payment"> &nbsp; {{$item->payment_method_name}}</label>
+                                <br>
+                            @endforeach
                         </div>
-                        <div class="col-md-12 mb-3 mb-md-0">
-                           <label><input type="radio" value="JazzCash" name="payment"> &nbsp; Jazz Cash online</label>
-                           <br>
-                           <label><input type="radio" value="Bank" name="payment"> &nbsp; Bank Cash</label>
-                           <br>
-                           <label><input type="radio" value="Debet" name="payment"> &nbsp; Debet Cart</label>
-                           <br>
-                           <label><input type="radio" value="Payneer" name="payment"> &nbsp; Payneer</label>
-                           <br>
-                           <label><input type="radio" value="Cash" name="payment"> &nbsp; Cash on Deleivery</label>
+
+                        {{-- ______________ Delivery information _________________ --}}
+                        <div class="col-md-6 mb-3 mb-md-0">
+                            <br><br>
+                            <label class="text-black h4" for="coupon">Delevery Type</label>
+                            <p class="text-black">Select Delevery Type</p>
+                            @foreach ($proDto->delevery_type as $item)
+                                <label><input type="radio" value="{{$item->id}}" name="payment"> &nbsp; {{$item->delivery_type_name}}</label>
+                                <br>
+                            @endforeach
                         </div> 
                     </div>
 
@@ -90,7 +101,8 @@
                                     <span class="text-black">TotalItem</span>
                                 </div>
                                 <div class="col-md-6 text-right">
-                                    <strong class="text-black">Rs {{$proTotal->totalItems}}</strong>
+                                    <input type="hidden" name="totalItem" value="{{$proDto->totalItems}}">
+                                    <strong class="text-black">Rs {{$proDto->totalItems}}</strong>
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -98,7 +110,8 @@
                                     <span class="text-black">Subtotal</span>
                                 </div>
                                 <div class="col-md-6 text-right">
-                                    <strong class="text-black">Rs {{$proTotal->totalValue}}</strong>
+                                    <input type="hidden" name="totalValue" value="{{$proDto->totalValue}}">
+                                    <strong class="text-black">Rs {{$proDto->totalValue}}</strong>
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -106,7 +119,11 @@
                                     <span class="text-black">Deleviery Charges</span>
                                 </div>
                                 <div class="col-md-6 text-right">
+                                    @php
+                                        $delveryCharges = 119;
+                                    @endphp
                                     <strong class="text-black">119</strong>
+                                    <input type="hidden" name="delveryCharges" value="119">
                                 </div>
                             </div>
                             <div class="row mb-5">
@@ -114,7 +131,11 @@
                                     <span class="text-black">Total Bill</span>
                                 </div>
                                 <div class="col-md-6 text-right">
-                                    <strong class="text-black">{{$proTotal->totalValue + 119}}</strong>
+                                    @php
+                                        $totalBill = $proDto->totalValue + 119;
+                                    @endphp
+                                    <strong class="text-black">{{$totalBill}}</strong>
+                                    <input type="hidden" name="delveryCharges" value="{{$totalBill}}">
                                 </div>
                             </div>
                             <div class="row">

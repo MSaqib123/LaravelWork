@@ -133,26 +133,24 @@ class ProductController extends Controller
     //__________ Order ____________
     public function Order(Request $req)
     {
-        // Check if the user is logged in
+        // _______ 1.Check if the user is logged in _________
         if (!$req->session()->has('user')) {
             // Redirect the user to the login page if not logged in
             return redirect('/Account/Login');
         }
 
-        // Get the user ID from the session
+        // _______ Get the user ID from the session
         $userId = $req->session()->get('user')['id'];
 
-        // Retrieve the cart items for the user with the product details using a join
+        // _______ Retrieve the cart items for the user with the product details using a join
         $cartItems = DB::table('cart')
             ->join('products', 'cart.product_id', '=', 'products.id')
             ->where('cart.user_id', $userId)
             ->select('cart.*', 'products.price as product_price')
             ->get();
-
-        // Calculate the total value and total amount before discount
+        // _______ Calculate the total value and total amount before discount
         $totalValue = 0;
         $totalItems = 0;
-
         foreach ($cartItems as $cartItem) {
             // Total items based on quantity
             $totalItems += $cartItem->quantity;
@@ -161,14 +159,22 @@ class ProductController extends Controller
             $totalValue += $cartItem->product_price * $cartItem->quantity;
         }
 
+        //_____ get Payment Method  ___
+        $payment_method = DB::table('payment_method')->get();
+
+        //_____ get Payment Method  ___
+        $delevery_type = DB::table('delevery_type')->get();
+
         // Create an object to hold the total items and total value
-        $proDetail = (object) [
+        $dto = (object) [
             'totalItems' => $totalItems,
             'totalValue' => $totalValue,
+            'paymentMethod' => $payment_method,
+            'delevery_type' => $delevery_type
         ];
 
         // Pass the object to the view
-        return view('client.Product.order', ['proTotal' => $proDetail]);
+        return view('client.Product.order', ['proDto' => $dto]);
     }
 
     //__________ CheckOut ____________
