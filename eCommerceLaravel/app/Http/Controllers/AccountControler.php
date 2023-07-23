@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class AccountControler extends Controller
@@ -13,6 +14,7 @@ class AccountControler extends Controller
         return View("account.login");
     }
 
+    /*___ Migration is Secure __*/
     public function LoginPost(Request $req){
         $user= User::Where(['email'=>$req->email])->first();
         if(!$user || !Hash::check($req->password , $user->password)){
@@ -29,6 +31,28 @@ class AccountControler extends Controller
 
         return Redirect("/");
     }
+
+
+    /*___ DB is not Secure___ */
+    // public function LoginPost(Request $req){
+    //     $email = $req->email;
+    //     $password = $req->password;
+        
+    //     $user = DB::select("SELECT * FROM users WHERE email = '$email' LIMIT 1");
+
+    //     if (!$user) {
+    //         $match = "UserNot Match";
+    //         return view("account.login", compact('user'));
+    //     }
+
+    //     // Add user data to the session
+    //     $req->session()->put('user', $user);
+
+    //     // Redirect to the home page    
+    //     return redirect("/");
+    // }
+
+
     
     //_________________ 2. Register __________________
     public function Register(){

@@ -43,6 +43,8 @@ Route::get('/Product/CartList', [ProductController::class,"CartList"]);
 Route::get('/Product/Remove/{id}', [ProductController::class,"RemoveCart"]);
 
 Route::get('/Product/UpdateQuantity/{id}', [ProductController::class,"UpdateQuantity"]);
+
+Route::get('/Product/Order', [ProductController::class,"Order"]);
 #endregion 
 
 //____________________ dashboard __________________
