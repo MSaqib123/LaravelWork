@@ -27,7 +27,8 @@
 
                     {{-- ______________ Personal information _________________ --}}
                     {{-- ====== open Form ====== --}}
-                    <form method="post" action="/">
+                    <form method="post" action="{{route('order.checkout')}}">
+                        @csrf
                     <div class="row">
                         <div class="col-md-12">
                             <br><br>
@@ -76,10 +77,10 @@
                         {{-- ______________ Delivery information _________________ --}}
                         <div class="col-md-6 mb-3 mb-md-0">
                             <br><br>
-                            <label class="text-black h4" for="coupon">Delevery Type</label>
-                            <p class="text-black">Select Delevery Type</p>
+                            <label class="text-black h4" for="coupon">Delivery Type</label>
+                            <p class="text-black">Select Delivery Type</p>
                             @foreach ($proDto->delevery_type as $item)
-                                <label><input type="radio" value="{{$item->id}}" name="payment"> &nbsp; {{$item->delivery_type_name}}</label>
+                                <label><input type="radio" value="{{$item->id}}" name="delivery"> &nbsp; {{$item->delivery_type_name}}</label>
                                 <br>
                             @endforeach
                         </div> 
@@ -135,14 +136,12 @@
                                         $totalBill = $proDto->totalValue + 119;
                                     @endphp
                                     <strong class="text-black">{{$totalBill}}</strong>
-                                    <input type="hidden" name="delveryCharges" value="{{$totalBill}}">
+                                    <input type="hidden" name="totalBill" value="{{$totalBill}}">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <button class="btn btn-primary btn-lg btn-block"
-                                        onclick="window.location='checkout.html'">Proceed
-                                        To Checkout</button>
+                                    <button class="btn btn-primary btn-lg btn-block">Proceed To Checkout</button>
                                 </div>
                             </div>
                         </div>

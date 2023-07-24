@@ -45,6 +45,8 @@ Route::get('/Product/Remove/{id}', [ProductController::class,"RemoveCart"]);
 Route::get('/Product/UpdateQuantity/{id}', [ProductController::class,"UpdateQuantity"]);
 
 Route::get('/Product/Order', [ProductController::class,"Order"]);
+
+Route::Post('/Product/OrderCheckout', [ProductController::class,"OrderCheckout"])->name('order.checkout');
 #endregion 
 
 //____________________ dashboard __________________

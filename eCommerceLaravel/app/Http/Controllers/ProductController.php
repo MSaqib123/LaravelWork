@@ -3,7 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\cart;
+use App\Models\checkout;
+use App\Models\delivery;
+use App\Models\order_details;
+use App\Models\orders;
+use App\Models\payment;
 use App\Models\Product;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
@@ -142,6 +148,16 @@ class ProductController extends Controller
         // _______ Get the user ID from the session
         $userId = $req->session()->get('user')['id'];
 
+        // _______ if no Cart then don't show this page ____
+        if(cart::where('user_id',$userId)->count() == 0){
+            return redirect("/");
+        }
+
+        // _______ if no Cart then don't show this page ____
+        if(cart::where('user_id',$userId)->count() == 0){
+            return redirect("/");
+        }
+
         // _______ Retrieve the cart items for the user with the product details using a join
         $cartItems = DB::table('cart')
             ->join('products', 'cart.product_id', '=', 'products.id')
@@ -159,10 +175,10 @@ class ProductController extends Controller
             $totalValue += $cartItem->product_price * $cartItem->quantity;
         }
 
-        //_____ get Payment Method  ___
+        //_____ get Payment Method ___
         $payment_method = DB::table('payment_method')->get();
 
-        //_____ get Payment Method  ___
+        //_____ get Payment Method ___
         $delevery_type = DB::table('delevery_type')->get();
 
         // Create an object to hold the total items and total value
@@ -177,6 +193,91 @@ class ProductController extends Controller
         return view('client.Product.order', ['proDto' => $dto]);
     }
 
+    
     //__________ CheckOut ____________
+    public function OrderCheckout(Request $req)
+    {
+        // _______ 1.Check if the user is logged in _________
+        if (!$req->session()->has('user')) {
+            return redirect('/Account/Login');
+        }
 
+        // _______ Get the user ID from the session
+        $userId = $req->session()->get('user')['id'];
+
+        // _______ if no Cart then don't show this page ____
+        if(cart::where('user_id',$userId)->count() == 0){
+            return redirect("/");
+        }
+
+        // _______ Retrieve the cart items for the user with the product details using a join
+        $cartItems = DB::table('cart')
+            ->join('products', 'cart.product_id', '=', 'products.id')
+            ->where('cart.user_id', $userId)
+            ->select('cart.*', 'products.price as product_price')
+            ->get();
+
+        
+        //___________________ 1. Insert Order Table _______________
+        $orders = new orders;
+        $orders->user_id = $userId;
+        $orders->status = 0;
+        $orders->save();
+
+
+        //___________________ 2. Insert Product_Details Table () _______________
+        foreach ($cartItems as $item) {
+            $order_detail = new order_details;
+            $order_detail->order_id = $orders->id;
+            $order_detail->product_id = $item->product_id;
+            $order_detail->quantity = $item->quantity;
+            $order_detail->price = $item->quantity*$item->product_price;
+            $order_detail->status = 2;
+            $order_detail->save();
+        }
+        //removeing all products form cart
+        foreach ($cartItems as $item) {
+            $cart = new cart;
+            $cart->destroy($item->id);
+        }
+
+        //___________________ 3. Insert Payment Table _______________
+        $payment = new payment;
+        $payment->order_id = $orders->id;
+        $payment->payment_method_id = $req->payment;
+        $payment->amount = $req->totalBill;
+        // $payment->payment_date = ;
+        $payment->paymentStatus	 = 2;
+        
+        $payment->save();
+
+        //___________________ 4. Insert Delivery Table _______________
+        $delvery = new delivery;
+        $delvery->order_id = $orders->id;
+        $delvery->delivery_type_id = $req->delivery;
+        $delvery->deliveryAddress = $req->deliveryAddress;
+        $delvery->deliveryStatus =  2;
+        // $delvery->deliveryDate= date("");
+
+        $delvery->save();
+
+        //___________________ 5. Insert checkOut Delivery Table _______________
+        $check = new checkout;
+        $check->name = $req->name;
+        $check->email = $req->email;
+        $check->address = $req->address;
+        $check->phone = $req->phone;
+        $check->mobile = $req->mobile;
+        $check->order_id = $orders->id;
+        $check->user_id = $userId;
+        $check->payment_id = $payment->id;
+        $check->delivery_id = $delvery->id;
+        $check->status = 2;
+
+        $check->save();
+
+
+        return redirect('/');
+    }
+    
 }
