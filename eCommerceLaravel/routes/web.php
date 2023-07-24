@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccountControler;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LogUserController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
@@ -48,6 +49,13 @@ Route::get('/Product/Order', [ProductController::class,"Order"]);
 
 Route::Post('/Product/OrderCheckout', [ProductController::class,"OrderCheckout"])->name('order.checkout');
 #endregion 
+
+
+//____________________ dashboard __________________
+#region profile_region
+Route::get('/LogUser/Index', [LogUserController::class,"Index"])->name('LogUser.index');
+
+#endregion
 
 //____________________ dashboard __________________
 #region dashbaord routes
